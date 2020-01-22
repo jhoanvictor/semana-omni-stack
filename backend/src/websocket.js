@@ -5,8 +5,8 @@ const calculateDistance = require('./utils/calculateDistance')
 let io
 const connections = []
 
-exports.setupWebScoket = (server) => {
-    console.log(`\n\nServer: ${JSON.stringify(server)}\n\n`)
+exports.setupWebsocket = (server) => {
+    
     io = socketio(server)
 
     io.on('connection', socket => {
@@ -29,7 +29,7 @@ exports.setupWebScoket = (server) => {
 
 exports.findConnections = (coordinates, techs) => {
     return connections.filter( connections => {
-        return calculateDistance(coordinates, connections.connections) < 10 && connections.techs.some(item => techs.includes(item))
+        return calculateDistance(coordinates, connections.coordinates) < 10 && connections.techs.some(item => techs.includes(item))
     })
 }
 

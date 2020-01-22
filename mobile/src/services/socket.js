@@ -1,11 +1,11 @@
 import socketio from 'socket.io-client'
 
 
-const socket = socketio('http://10.14.2.156:3333', {
+const socket = socketio('http://192.168.1.117:3333', {
     autoConnect: false
 })
 
-function subscribeToNewDev(subscribeFunction){
+function subscribeToNewDevs(subscribeFunction){
     socket.on('new-dev', subscribeFunction)
 }
 
@@ -29,5 +29,7 @@ function disconnect(){
 }
 
 export {
-    connect, disconnect, subscribeToNewDev  
+    connect, 
+    disconnect, 
+    subscribeToNewDevs
 }
